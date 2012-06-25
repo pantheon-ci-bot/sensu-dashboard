@@ -70,6 +70,7 @@
   <!--<div class="copy">Copy</div>-->
   <div style="clear: both;"></div>
 </div>
+{{if description}}
 <div class="event_detail_group">
   <div class="event_detail">
     <h1>Description</h1>
@@ -78,6 +79,8 @@
   <!--<div class="copy">Copy</div>-->
   <div style="clear: both;"></div>
 </div>
+{{/if}}
+{{if playbook}}
 <div class="event_detail_group">
   <div class="event_detail">
     <h1>Playbook</h1>
@@ -86,7 +89,7 @@
   <!--<div class="copy">Copy</div>-->
   <div style="clear: both;"></div>
 </div>
-
+{{/if}}
 </script>
 
 <!-- Client details row template  -->
