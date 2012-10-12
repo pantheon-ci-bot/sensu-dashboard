@@ -222,10 +222,10 @@ class Dashboard < Sinatra::Base
           check = event.delete('check')
           events[client] ||= Hash.new
           events[client][check] = event
-          if $settings.to_hash['checks'][check]
-            events[client][check][:playbook] = $settings.to_hash['checks'][check]['playbook']
-            events[client][check][:description] = $settings.to_hash['checks'][check]['description']
-          end
+#          if $settings.to_hash['checks'][check]
+#            events[client][check][:playbook] = $settings.to_hash['checks'][check]['playbook']
+#            events[client][check][:description] = $settings.to_hash['checks'][check]['description']
+#          end
         end
       end
       status http.response_header.status
