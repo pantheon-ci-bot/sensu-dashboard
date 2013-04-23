@@ -2,24 +2,31 @@
   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h4 id="modal_label">
       <span>{{event.client}}</span><br />
+      {{#if event.playbook}}
+      <small>{{event.check}} <a href="{{event.playbook}}" target="_blank">Playbook</a></small>
+      {{else}}
       <small>{{event.check}}</small>
+      {{/if}}
     </h4>
 </div>
 <div class="modal-body">
   <h3 class="section_title">event data</h3>
+  <div class="well">
   {{#each event}}
-    <div class="well">
-      <h5>{{@key}}</h5>
-      <span class="modal_value">{{#if this}}{{this}}{{else}}false/nil{{/if}}</span>
-    </div>
+    {{#if this}}
+      <strong>{{@key}}</strong> <span class="modal_value">{{#if this}}{{this}}{{else}}false/nil{{/if}}</span><br/>
+    {{/if}}
   {{/each}}
+  </div>
+
   <h3 class="section_title">client data</h3>
+  <div class="well">
   {{#each client}}
-    <div class="well">
-      <h5>{{@key}}</h5>
-      <span class="modal_value">{{#if this}}{{this}}{{else}}false/nil{{/if}}</span>
-    </div>
+    {{#if this}}
+      <strong>{{@key}}</strong> <span class="modal_value">{{#if this}}{{this}}{{else}}false/nil{{/if}}</span>
+    {{/if}}
   {{/each}}
+  </div>
 </div>
 <div class="modal-footer">
   <button id="silence_client" class="btn btn-danger">

@@ -10,6 +10,7 @@ namespace "SensuDashboard.Models", (exports) ->
       status: 3
       flapping: false
       issued: "0000-00-00T00:00:00Z"
+      playbook: null
 
     initialize: ->
       @set(id: "#{@get("client")}/#{@get("check")}")
@@ -19,10 +20,21 @@ namespace "SensuDashboard.Models", (exports) ->
         url: "/events/#{@get("id")}"
         client_silence_path: "silence/#{@get("client")}"
         silence_path: "silence/#{@get("id")}"
+      
+      # Grab the check's playbook
+      @listenTo(SensuDashboard.Checks, "reset", @setPlaybook)
+      @listenTo(SensuDashboard.Checks, "add", @setPlaybook)
+      @listenTo(SensuDashboard.Checks, "remove", @setPlaybook)
+      @setPlaybook()
+
       @listenTo(SensuDashboard.Stashes, "reset", @setSilencing)
       @listenTo(SensuDashboard.Stashes, "add", @setSilencing)
       @listenTo(SensuDashboard.Stashes, "remove", @setSilencing)
       @setSilencing()
+
+    setPlaybook: =>
+      @set
+        playbook: SensuDashboard.Checks.get(@get("check")).attributes['playbook']
 
     setSilencing: ->
       silenced = false

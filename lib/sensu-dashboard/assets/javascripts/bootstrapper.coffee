@@ -15,9 +15,9 @@ namespace "SensuDashboard", (exports) ->
           success: (data, textStatus, jqXHR) ->
             SensuDashboard.PollFrequency = data.info.sensu_dashboard.poll_frequency
             SensuDashboard.Stashes = new SensuDashboard.Collections.Stashes(data.stashes)
+            SensuDashboard.Checks = new SensuDashboard.Collections.Checks(data.checks)
             SensuDashboard.Events = new SensuDashboard.Collections.Events(data.events)
             SensuDashboard.Clients = new SensuDashboard.Collections.Clients(data.clients)
-            SensuDashboard.Checks = new SensuDashboard.Collections.Checks(data.checks)
             SensuDashboard.EventsMetadata = new SensuDashboard.Models.Metadata.Events
             SensuDashboard.Info = new SensuDashboard.Models.Info(data.info)
 
