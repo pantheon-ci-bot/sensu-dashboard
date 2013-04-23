@@ -5,7 +5,7 @@ namespace "SensuDashboard.Collections", (exports) ->
     url: "/events"
 
     comparator: (event) ->
-      event.get("status_name")
+      event.get("client")
 
     getSelected: ->
       @where(selected: true)
