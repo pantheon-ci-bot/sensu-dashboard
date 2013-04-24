@@ -1,3 +1,5 @@
+{{#unless client_silenced}}
+{{#unless silenced}}
 <td class="select"><input type="checkbox" {{selected selected}}/></td>
 <td class="client">
   {{#if client_silenced}}
@@ -16,3 +18,5 @@
   {{check}}
 </td>
 <td class="output">{{truncate output 90}}</td>
+{{/unless}}
+{{/unless}}

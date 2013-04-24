@@ -33,8 +33,10 @@ namespace "SensuDashboard.Models", (exports) ->
       @setSilencing()
 
     setPlaybook: =>
-      @set
-        playbook: SensuDashboard.Checks.get(@get("check")).attributes['playbook']
+      check_obj = SensuDashboard.Checks.get(@get("check"))
+      if check_obj
+        @set
+          playbook: check_obj.attributes['playbook']
 
     setSilencing: ->
       silenced = false
